@@ -235,7 +235,7 @@ class ScanRecordController extends Controller
             fprintf($file, chr(0xEF).chr(0xBB).chr(0xBF));
             
             // Header row - Dùng dấu chấm phẩy cho Excel Việt Nam
-            fputcsv($file, ['STT', 'Barcode', 'Ngày giờ', 'Kết quả', 'Ca', 'Thời gian tạo'], ';');
+            fputcsv($file, ['STT', 'Barcode', 'Ngày giờ', 'Kết quả', 'Ca'], ';');
 
             // Data rows
             foreach ($records as $record) {
@@ -245,7 +245,6 @@ class ScanRecordController extends Controller
                     $record->ngay_gio,
                     $record->ket_qua,
                     $record->ca ? $record->ca : 'N/A',
-                    $record->created_at->format('d/m/Y H:i:s')
                 ], ';');
             }
 
